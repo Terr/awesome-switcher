@@ -258,21 +258,8 @@ function _M.preview()
 	-- create a list that holds the clients to preview, from left to right
 	local leftRightTab = {}
 	local leftRightTabToAltTabIndex = {} -- save mapping from leftRightTab to altTabTable as well
-	local nLeft
-	local nRight
-	if #_M.altTabTable == 2 then
-		nLeft = 0
-		nRight = 2
-	else
-		nLeft = math.floor(#_M.altTabTable / 2)
-		nRight = math.ceil(#_M.altTabTable / 2)
-	end
 
-	for i = 1, nLeft do
-		table.insert(leftRightTab, _M.altTabTable[#_M.altTabTable - nLeft + i].client)
-		table.insert(leftRightTabToAltTabIndex, #_M.altTabTable - nLeft + i)
-	end
-	for i = 1, nRight do
+	for i = 1, #_M.altTabTable do
 		table.insert(leftRightTab, _M.altTabTable[i].client)
 		table.insert(leftRightTabToAltTabIndex, i)
 	end
