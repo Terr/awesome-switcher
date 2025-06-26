@@ -164,9 +164,9 @@ end
 
 function _M.createPreviewText(client)
 	if client.class then
-		return " - " .. client.class
+		return " " .. client.class
 	else
-		return " - " .. client.name
+		return " " .. client.name
 	end
 end
 
@@ -322,6 +322,7 @@ function _M.preview()
 				local a = 0.8
 				local overlay = 0.6
 				local fontSize = smallFont
+				-- Enlarge the thumbnail of the selected client, and remove transparency
 				if c == _M.altTabTable[_M.altTabIndex].client then
 					a = 0.9
 					overlay = 0
@@ -398,7 +399,7 @@ function _M.preview()
 				-- Overlays
 				cr:scale(1/sx, 1/sy)
 				cr:translate(-tx, -ty)
-				cr:set_source_rgba(0,0,0,overlay)
+				cr:set_source_rgba(0, 0, 0, overlay)
 				cr:rectangle(tx, ty, sx * cg.width, sy * cg.height)
 				cr:fill()
 			end
@@ -510,7 +511,7 @@ function _M.switch(dir, mod_key1, release_key, mod_key2, key_switch)
 					end
 
 					keygrabber.stop()
-				
+
 				elseif key == key_switch and event == "press" then
 					if gears.table.hasitem(mod, mod_key2) then
 						-- Move to previous client on Shift-Tab
